@@ -9,14 +9,14 @@
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 
 	curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
-		"secret"=>"6Lf39kYUAAAAAJGLobWkD24CKi8-7KYJ3p4Jt0IE",
+		"secret"=>"",  //adicionar a chave disponibilizada pela Google
 		"response"=>$_POST["g-recaptcha-response"],
 		"remoteip"=>$_SERVER["REMOTE_ADDR"]  //captura o ip do usuário
 	)));
 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); //resposta do Google
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 
-	$recaptcha = json_decode(curl_exec($ch), true);
+	$recaptcha = json_decode(curl_exec($ch), true); //resposta do Google
 
 	curl_close($ch);
 
